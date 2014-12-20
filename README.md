@@ -2,12 +2,14 @@
 
 ## Usage
 
+	lein run -e staging -v v1
 
 
 ## Development
 
-	lein run
-	M-x cider-connect 8888
+To run an nREPL Server
+
+	lein run -n
 
 FIXME
 

@@ -14,4 +14,3 @@
 (defn lookup [& ks]
   (get-in @current ks :config-not-found))
 
-
