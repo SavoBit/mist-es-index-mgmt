@@ -1,8 +1,8 @@
 (ns mist.esim.core
-  (:require [clojure.tools.nrepl.server :as nrepl]
+  (:require [clojure.tools.cli :refer [parse-opts]]
+            [clojure.tools.nrepl.server :as nrepl]
             [mist.esim.workflow :as workflow]
             [mist.esim.config :as config]
-            [clojure.tools.cli :refer [parse-opts]]
             [cider.nrepl :refer (cider-nrepl-handler)]))
 
 
@@ -16,12 +16,11 @@
     :default "dev"]
    ["-h" "--help"]])
 
-
 (defn -main [& args]
   (let [{:keys [options]} (parse-opts args cli-options)]
     (println "Starting nREPL server on 8888")
+    (config/init (str "config.edn." (:env options)))
     (if (:nrepl options)
       (nrepl/start-server :port (:nrepl-port options)
                           :handler cider-nrepl-handler)
       (workflow/run (:env options) (:version options)))))
-

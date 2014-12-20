@@ -1,0 +1,3 @@
+{ :host "elasticsearch-000-staging.mistsys.net" 
+ :port 9200
+ }
