@@ -9,7 +9,7 @@
 
 To run an nREPL Server
 
-	lein run -n
+	lein run --nrepl
 
 FIXME
 
