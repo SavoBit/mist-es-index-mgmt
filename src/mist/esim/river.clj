@@ -18,12 +18,13 @@
              :kafka.message.json true
              :log.kafka.message false}})
 
+
 (defn create [prefix type env version]
   (fmt "river/create" prefix type env version)
   (let [name (iname prefix type env version)
         alias (alias* prefix type env)
-        data (river name alias)]
-    (es/create name data)))
+        mappings (river name alias)]
+    (es/create-river name :mist-sdk)))
 
 (defn blank [prefix type env version]
   (fmt "river/blank" prefix type env version)
